@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <title>Modal Popup</title>
+  </head>
+  <body>
+    <section class="modal hidden">
+      <div class="flex">
+        <img src="user.png" width="50px" height="50px" alt="user" />
+        <button class="btn-close">⨉</button>
+      </div>
+      <div>
+        <h3>Stay in touch</h3>
+        <p>
+          This is a dummy newsletter form so don't bother trying to test it. Not
+          that I expect you to, anyways.
+        </p>
+      </div>
+      <input type="email" id="email" placeholder="brendaneich@js.com" />
+      <button class="btn">Submit</button>
+    </section>
+
+    <div class="overlay hidden"></div>
+    <button class="btn btn-open">Open Modal</button>
+
+    <script src="./js/main.js"></script>
+  </body>
+</html>
