@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+img {
+  margin: 5px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
