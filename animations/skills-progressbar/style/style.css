@@ -1,0 +1,228 @@
+.development_title {
+  text-align: center;
+  font-size: 15px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+.development_title h2 {
+  text-align: center;
+}
+
+.skills-bar-container {
+  position: relative;
+  margin: 0 auto;
+  width: 40%;
+  min-width: 350px;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  margin-bottom: 25px;
+}
+.skills-bar-container li {
+  position: relative;
+  width: 100%;
+  padding: 2px 2px;
+}
+
+.progressbar-title {
+  color: #ff6347;
+}
+.progressbar-title h3 {
+  display: inline-block;
+  position: relative;
+  top: 17px;
+  color: #888;
+}
+.progressbar-title .percent {
+  position: absolute;
+  right: 2px;
+  top: 40px;
+}
+
+.bar-container {
+  background: #555;
+  position: relative;
+  width: 100%;
+  height: 10px;
+  display: block;
+  border-radius: 5px;
+  margin-bottom: -15px;
+}
+.bar-container .progressbar {
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  border-radius: 5px;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
+
+.progresstomatoes {
+  background: #ff6347;
+}
+
+#progress-html {
+  -webkit-animation-name: progress-html;
+          animation-name: progress-html;
+  -webkit-animation-delay: 0.7s;
+          animation-delay: 0.7s;
+}
+
+#progress-css {
+  -webkit-animation-name: progress-css;
+          animation-name: progress-css;
+  -webkit-animation-delay: 1.4s;
+          animation-delay: 1.4s;
+}
+
+#progress-javascript {
+  -webkit-animation-name: progress-javascript;
+          animation-name: progress-javascript;
+  -webkit-animation-delay: 2.1s;
+          animation-delay: 2.1s;
+}
+
+#progress-php {
+  -webkit-animation-name: progress-php;
+          animation-name: progress-php;
+  -webkit-animation-delay: 2.8s;
+          animation-delay: 2.8s;
+}
+
+#progress-wordpress {
+  -webkit-animation-name: progress-wordpress;
+          animation-name: progress-wordpress;
+  -webkit-animation-delay: 3.5s;
+          animation-delay: 3.5s;
+}
+
+#progress-bootstrap {
+  -webkit-animation-name: progress-bootstrap;
+          animation-name: progress-bootstrap;
+  -webkit-animation-delay: 4.2s;
+          animation-delay: 4.2s;
+}
+
+#progress-laravel {
+  -webkit-animation-name: progress-laravel;
+          animation-name: progress-laravel;
+  -webkit-animation-delay: 4.9s;
+          animation-delay: 4.9s;
+}
+
+@-webkit-keyframes progress-html {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 90%;
+  }
+}
+@keyframes progress-html {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 90%;
+  }
+}
+@-webkit-keyframes progress-css {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 90%;
+  }
+}
+@keyframes progress-css {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 90%;
+  }
+}
+@-webkit-keyframes progress-javascript {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 70%;
+  }
+}
+@keyframes progress-javascript {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 70%;
+  }
+}
+@-webkit-keyframes progress-php {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 55%;
+  }
+}
+@keyframes progress-php {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 55%;
+  }
+}
+@-webkit-keyframes progress-bootstrap {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 75%;
+  }
+}
+@keyframes progress-bootstrap {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 75%;
+  }
+}
+@-webkit-keyframes progress-wordpress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 65%;
+  }
+}
+@keyframes progress-wordpress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 65%;
+  }
+}
+@-webkit-keyframes progress-laravel {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 35%;
+  }
+}
+@keyframes progress-laravel {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 35%;
+  }
+}/*# sourceMappingURL=style.css.map */

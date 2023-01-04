@@ -1,0 +1,183 @@
+$color: #ff6347;
+$animation-delay: 0.7s;
+
+@mixin kerning($kerning) {
+  letter-spacing: $kerning + px;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+.development_title {
+  text-align: center;
+  font-size: 15px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  h2 {
+    text-align: center;
+  }
+}
+
+.skills-bar-container {
+  position: relative;
+  margin: 0 auto;
+  width: 40%;
+  min-width: 350px;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  margin-bottom: 25px;
+
+  li {
+    position: relative;
+    width: 100%;
+    padding: 2px 2px;
+    //margin-bottom: 5px;
+  }
+}
+
+.progressbar-title {
+  color: $color;
+  h3 {
+    display: inline-block;
+    position: relative;
+    top: 17px;
+    color: #888;
+  }
+  .percent {
+    position: absolute;
+    right: 2px;
+    top: 40px;
+  }
+}
+
+.bar-container {
+  background: #555;
+  position: relative;
+  width: 100%;
+  height: 10px;
+  display: block;
+  @include border-radius(5px);
+  margin-bottom: -15px;
+  .progressbar {
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    @include border-radius(5px);
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: both;
+  }
+}
+
+.progresstomatoes {
+  background: $color;
+}
+#progress-html {
+  animation-name: progress-html;
+  animation-delay: $animation-delay;
+}
+#progress-css {
+  animation-name: progress-css;
+  animation-delay: $animation-delay * 2;
+}
+#progress-javascript {
+  animation-name: progress-javascript;
+  animation-delay: $animation-delay * 3;
+}
+#progress-php {
+  animation-name: progress-php;
+  animation-delay: $animation-delay * 4;
+}
+#progress-wordpress {
+  animation-name: progress-wordpress;
+  animation-delay: $animation-delay * 5;
+}
+#progress-bootstrap {
+  animation-name: progress-bootstrap;
+  animation-delay: $animation-delay * 6;
+}
+#progress-laravel {
+  animation-name: progress-laravel;
+  animation-delay: $animation-delay * 7;
+}
+
+@include keyframes(progress-html) {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 90%;
+  }
+}
+@include keyframes(progress-css) {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 90%;
+  }
+}
+@include keyframes(progress-javascript) {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 70%;
+  }
+}
+@include keyframes(progress-php) {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 55%;
+  }
+}
+
+@include keyframes(progress-bootstrap) {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 75%;
+  }
+}
+@include keyframes(progress-wordpress) {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 65%;
+  }
+}
+
+@include keyframes(progress-laravel) {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 35%;
+  }
+}
