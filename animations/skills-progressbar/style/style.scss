@@ -34,6 +34,7 @@ $animation-delay: 0.7s;
   font-size: 15px;
   text-transform: uppercase;
   margin-bottom: 15px;
+  margin-top: 50px;
   h2 {
     text-align: center;
   }
@@ -88,12 +89,14 @@ $animation-delay: 0.7s;
     animation-duration: 2s;
     animation-timing-function: ease-out;
     animation-fill-mode: both;
+    transition: all linear .35s;
   }
 }
 
 .progresstomatoes {
   background: $color;
 }
+
 #progress-html {
   animation-name: progress-html;
   animation-delay: $animation-delay;
@@ -106,78 +109,40 @@ $animation-delay: 0.7s;
   animation-name: progress-javascript;
   animation-delay: $animation-delay * 3;
 }
-#progress-php {
-  animation-name: progress-php;
+#progress-react {
+  animation-name: progress-react;
   animation-delay: $animation-delay * 4;
 }
-#progress-wordpress {
-  animation-name: progress-wordpress;
-  animation-delay: $animation-delay * 5;
-}
-#progress-bootstrap {
-  animation-name: progress-bootstrap;
-  animation-delay: $animation-delay * 6;
-}
-#progress-laravel {
-  animation-name: progress-laravel;
-  animation-delay: $animation-delay * 7;
-}
 
-@include keyframes(progress-html) {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 90%;
-  }
-}
-@include keyframes(progress-css) {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 90%;
-  }
-}
-@include keyframes(progress-javascript) {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 70%;
-  }
-}
-@include keyframes(progress-php) {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 55%;
-  }
-}
-
-@include keyframes(progress-bootstrap) {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 75%;
-  }
-}
-@include keyframes(progress-wordpress) {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 65%;
-  }
-}
-
-@include keyframes(progress-laravel) {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 35%;
-  }
-}
+// @include keyframes(progress-html) {
+//   0% {
+//     width: 0%;
+//   }
+//   100% {
+//     width: 90%;
+//   }
+// }
+// @include keyframes(progress-css) {
+//   0% {
+//     width: 0%;
+//   }
+//   100% {
+//     width: 90%;
+//   }
+// }
+// @include keyframes(progress-javascript) {
+//   0% {
+//     width: 0%;
+//   }
+//   100% {
+//     width: 70%;
+//   }
+// }
+// @include keyframes(progress-react) {
+//   0% {
+//     width: 0%;
+//   }
+//   100% {
+//     width: 55%;
+//   }
+// }
