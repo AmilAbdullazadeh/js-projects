@@ -10,9 +10,9 @@ const durTime = document.querySelector("#durTime");
 const currTime = document.querySelector("#currTime");
 
 const songs = [
-  "Juice WRLD Ft Benny Blanco - Real Shit",
-  "Lil Baby, Lil Durk ft Rodwave - Rich Off Pain",
-  "Polo G – I Know",
+  "Juice WRLD Ft Benny Blanco - Real Shit", //0
+  "Lil Baby, Lil Durk ft Rodwave - Rich Off Pain", //1
+  "Polo G – I Know", //2
 ];
 
 let songIndex = 1;
@@ -41,6 +41,43 @@ function pause() {
 
 playBtn.addEventListener("click", () => {
   let isPlaying = musicContainer.classList.contains("play");
-  isPlaying ? pause() : play()
-})
+  isPlaying ? pause() : play();
+});
+
+prevBtn.addEventListener("click", prevSong);
+nextBtn.addEventListener("click", nextSong);
+
+function prevSong(event) {
+  songIndex--;
+
+  if (songIndex < 0) {
+    songIndex = songs.length - 1;
+  }
+
+  loadSong(songs[songIndex]);
+
+  play();
+}
+
+function nextSong(event) {
+  songIndex++
+
+  if (songIndex > songs.length - 1) {
+    songIndex = 0
+  }
+
+  loadSong(songs[songIndex])
+
+  play()
+}
+
+audio.addEventListener("timeupdate", updateProgress)
+
+function updateProgress(e) {
+  const { duration, currentTime } = e.srcElement;
+  let progressPercent = (currentTime / duration) * 100;
+  progress.style.width = `${progressPercent}%`;
+}
+
+audio.addEventListener("ended", nextSong);
 
