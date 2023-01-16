@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <title>Form Validation</title>
+  </head>
+  <body>
+
+
+  <form
+      id="form"
+      name="myForm"
+    >
+      <table cellspacing="2" cellpadding="2" border="1">
+        <tr>
+          <td align="right">Fullname</td>
+          <td><input type="text" name="fullname"  id="fullname"/></td>
+        </tr>
+
+        <tr>
+          <td align="right">EMail</td>
+          <td><input type="text" name="email"  id="email"/></td>
+        </tr>
+
+        <tr>
+          <td align="right">Zip Code</td>
+          <td><input type="text" name="zip"  id="zip"/></td>
+        </tr>
+
+        <tr>
+          <td align="right">Country</td>
+          <td>
+            <select name="country" id="country">
+              <option value="-1" selected>[choose yours]</option>
+              <option value="usa">USA</option>
+              <option value="uk">UK</option>
+              <option value="india">INDIA</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <td align="right"></td>
+          <td><input type="submit" value="Submit" /></td>
+        </tr>
+      </table>
+    </form>
+
+    <script src="./js/main.js"></script>
+  </body>
+</html>

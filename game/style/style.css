@@ -101,11 +101,11 @@ main {
 }
 
 /* Rotate the scissor of second player */
-#player2 .option > img[alt="Scissor"] {
+#player2 .option > img[alt=Scissor] {
   transform: rotate(180deg);
 }
 
-#player2 .option:hover > img[alt="Scissor"] {
+#player2 .option:hover > img[alt=Scissor] {
   transform: rotate(180deg) scale(1.1);
 }
 
@@ -135,4 +135,4 @@ main {
 
 .reset > span:hover {
   color: #000;
-}
+}/*# sourceMappingURL=style.css.map */
