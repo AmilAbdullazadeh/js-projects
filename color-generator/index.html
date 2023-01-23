@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <title>Color generator</title>
+    <!-- Google Fonts Link -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome CDN Link -->
+    <script
+      src="https://kit.fontawesome.com/369c1756a5.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--TODO:: jQuery CDN Link -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="color-preview"></div>
+      <div class="controls">
+        <div class="input-box">
+          <input
+            type="text"
+            id="inputField"
+            class="input-field"
+            value="#ed145b"
+            readonly
+          />
+          <button class="copy-btn"><i class="fas fa-copy"></i></button>
+        </div>
+        <button class="generate-btn">Generate</button>
+        <div class="alert-msg">
+          copied <span class="code">#ed145b</span> to clipboard
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/main.js"></script>
+  </body>
+</html>
