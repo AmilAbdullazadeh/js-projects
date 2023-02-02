@@ -1,0 +1,15 @@
+.box {
+  width: 200px;
+  height: 300px;
+  color: #000;
+  background-color: rgba(34, 88, 252, 0.525);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.dFlex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

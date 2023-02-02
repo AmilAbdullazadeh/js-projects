@@ -1,14 +1,18 @@
-import { obj } from './components/List';
-
-let newAge = obj.age + 10
+import { useState } from 'react';
+import { List } from './components/List';
 
 function App() {
+  const [user, setUser] = useState({
+    name: 'Amil'
+  });
+
+  function artir() {
+    setUser(user.name);
+  }
+
   return (
     <>
-      <p>Hello</p>
-      {obj.listFunc()}
-      <br />
-      {newAge}
+      <List artir={artir} />
     </>
   );
 }

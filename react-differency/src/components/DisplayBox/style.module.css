@@ -1,0 +1,12 @@
+.box {
+  width: 200px;
+  height: 300px;
+  color: #000;
+  background-color: rgba(0, 255, 200, 0.525);
+}
+
+.dFlex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,16 +1,12 @@
-function List() {
-    return 'List'
+export function List({ artir }) {
+
+  console.log('rerender')  
+
+  return (
+    <div>
+      <ul>
+      </ul>
+      <button onClick={artir}>Artir</button>
+    </div>
+  );
 }
-
-let age = 20
-
-let obj = {
-    listFunc: List,
-    age
-}
-
-let fullname = "Samir Yusifov"
-
-export { obj, fullname };
-    
-
