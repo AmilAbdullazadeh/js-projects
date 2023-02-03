@@ -1,44 +1,19 @@
-import { useState } from "react";
 import { MenuListItem } from "../MenuListItem/MenuListItem";
 import s from "./style.module.css";
+//utils
+import { levels } from "../../utils/contants";
 
-export function MenuList() {
-  const [isHover, setIsHover] = useState(false);
-
-  const active = () => {
-    setIsHover(true);
-  };
-
-  const deactive = () => {
-    setIsHover(false);
-  };
+export function MenuList(props) {
 
   return (
     <div className={s.box}>
-      <MenuListItem
-        hover={isHover}
-        active={active}
-        deactive={deactive}
-        diffLevel="Low"
-      />
-      <MenuListItem
-        hover={isHover}
-        active={active}
-        deactive={deactive}
-        diffLevel="Medium"
-      />
-      <MenuListItem
-        hover={isHover}
-        active={active}
-        deactive={deactive}
-        diffLevel="Hard"
-      />
-      <MenuListItem
-        hover={isHover}
-        active={active}
-        deactive={deactive}
-        diffLevel="Extemelly"
-      />
+      {levels.map((level) => (
+        <MenuListItem
+          isSelected={props.level === level}
+          handleClick={props.handleClick}
+          diffLevel={level}
+        />
+      ))}
     </div>
   );
 }
