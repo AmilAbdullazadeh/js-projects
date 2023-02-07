@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
 import { TVShowAPI } from "./api/tv-shows";
 import { TVShowDetail } from "./components/TVShowDetail/TVShowDetail";
+// import { TVShowListItem } from "./components/TVShowListItem/TVShowListItem";
+import logoImg from "./assets/images/logo.png";
+import { Logo } from "./components/Logo/Logo";
+import { TVShowListItem } from "./components/TVShowListItem/TVShowListItem";
 import { BACKDROP_BASE_URL } from "./config";
 import s from "./style.module.css";
 
 export function App() {
-  const [currentTVShow, setCurrentTVShow] = useState()
+  const [currentTVShow, setCurrentTVShow] = useState();
+  const [tvShowRecommendations, setTvShowRecommendations] = useState([]);
 
   async function fetchData() {
     const data = await TVShowAPI.fetchPopulars();
@@ -14,9 +19,22 @@ export function App() {
     }
   }
 
+  async function fetchRecommendations(tvShowId) {
+    const data = await TVShowAPI.fetchRecommendations(tvShowId);
+    if (data.length !== 0) {
+      setTvShowRecommendations(data.slice(0, 10));
+    }
+  }
+
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (currentTVShow) {
+      fetchRecommendations(currentTVShow.id);
+    }
+  }, [currentTVShow]);
 
   return (
     <div
@@ -31,8 +49,7 @@ export function App() {
       <div className={s.header}>
         <div className="row">
           <div className="col-4">
-            <div>Logo here</div>
-            <div>subtitle</div>
+            <Logo img={logoImg} title="TVShow Advisor" subtitle="TV Shows" />
           </div>
           <div className="col-md-12 col-lg-4">
             <input style={{ width: "100%" }} type="text" />
@@ -40,9 +57,21 @@ export function App() {
         </div>
       </div>
       <div className={s.tv_show_details}>
-        <TVShowDetail tvShow={currentTVShow} />
+        {currentTVShow && <TVShowDetail tvShow={currentTVShow} />}
       </div>
-      <div className={s.recommended_shows}>Recommended tv shows</div>
+      <div className={s.recommended_shows}>
+        {tvShowRecommendations && (
+          <>
+            {tvShowRecommendations.map((recommendation) => (
+              <TVShowListItem
+                key={recommendation.id}
+                tvShow={recommendation}
+                onClick={() => console.log(recommendation.id)}
+              />
+            ))}
+          </>
+        )}
+      </div>
     </div>
   );
 }
