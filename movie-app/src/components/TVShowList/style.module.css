@@ -1,5 +1,4 @@
 .title {
-  font-family: Roboto;
   font-weight: 600;
   font-size: 20px;
 }
@@ -11,8 +10,7 @@
   display: flex;
   width: 100vw - 25px;
   overflow-x: hidden;
-  /* For scrollbar */
-  padding-bottom: 30px;
+  padding-bottom:30px;
 }
 
 .tv_show_item {

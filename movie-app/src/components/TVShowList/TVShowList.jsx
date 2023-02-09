@@ -6,13 +6,15 @@ export function TVShowList({ tvShowList, onClickItem }) {
     <div>
       <div className={s.title}>You'll probably like :</div>
       <div className={s.list}>
-        {tvShowList.map((tvShow) => {
-          return (
-            <span className={s.tv_show_item} key={tvShow.id}>
-              <TVShowListItem tvShow={tvShow} onClick={onClickItem} />
-            </span>
-          );
-        })}
+        {
+          tvShowList.map(tvShow => {
+            return (
+              <span className={s.tv_show_item} key={tvShow.id}>
+                <TVShowListItem tvShow={tvShow} onClick={onClickItem} />
+              </span>
+            );
+          })
+          }
       </div>
     </div>
   );

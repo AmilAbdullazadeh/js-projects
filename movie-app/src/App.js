@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { TVShowAPI } from "./api/tv-shows";
-import { TVShowDetail } from "./components/TVShowDetail/TVShowDetail";
-// import { TVShowListItem } from "./components/TVShowListItem/TVShowListItem";
 import logoImg from "./assets/images/logo.png";
 import { Logo } from "./components/Logo/Logo";
-import { TVShowListItem } from "./components/TVShowListItem/TVShowListItem";
+import { SearchBar } from "./components/SearchBar/SearchBar";
+import { TVShowDetail } from "./components/TVShowDetail/TVShowDetail";
+import { TVShowList } from "./components/TVShowList/TVShowList";
 import { BACKDROP_BASE_URL } from "./config";
 import s from "./style.module.css";
 
@@ -13,17 +13,40 @@ export function App() {
   const [tvShowRecommendations, setTvShowRecommendations] = useState([]);
 
   async function fetchData() {
-    const data = await TVShowAPI.fetchPopulars();
-    if (data.length !== 0) {
-      setCurrentTVShow(data);
+    try {
+      const data = await TVShowAPI.fetchPopulars();
+      if (data.length !== 0) {
+        setCurrentTVShow(data);
+      }
+    } catch (error) {
+      alert(error?.status_message);
     }
   }
 
   async function fetchRecommendations(tvShowId) {
-    const data = await TVShowAPI.fetchRecommendations(tvShowId);
-    if (data.length !== 0) {
-      setTvShowRecommendations(data.slice(0, 10));
+    try {
+      const data = await TVShowAPI.fetchRecommendations(tvShowId);
+      if (data.length !== 0) {
+        setTvShowRecommendations(data.slice(0, 10));
+      }
+    } catch (error) {
+      alert(error?.status_message);
     }
+  }
+
+  async function fetchByTitle(title) {
+    try {
+      const data = await TVShowAPI.fetchByTitle(title);
+      if (data.length !== 0) {
+        setCurrentTVShow(data);
+      }
+    } catch (error) {
+      alert(error?.status_message);
+    }
+  }
+
+  function updateCurrentTVShow(tvShow) {
+    setCurrentTVShow(tvShow);
   }
 
   useEffect(() => {
@@ -49,10 +72,10 @@ export function App() {
       <div className={s.header}>
         <div className="row">
           <div className="col-4">
-            <Logo img={logoImg} title="TVShow Advisor" subtitle="TV Shows" />
+            <Logo img={logoImg} title="Watchman" subtitle="Watchman movies" />
           </div>
           <div className="col-md-12 col-lg-4">
-            <input style={{ width: "100%" }} type="text" />
+            <SearchBar onSubmit={fetchByTitle} />
           </div>
         </div>
       </div>
@@ -60,16 +83,11 @@ export function App() {
         {currentTVShow && <TVShowDetail tvShow={currentTVShow} />}
       </div>
       <div className={s.recommended_shows}>
-        {tvShowRecommendations && (
-          <>
-            {tvShowRecommendations.map((recommendation) => (
-              <TVShowListItem
-                key={recommendation.id}
-                tvShow={recommendation}
-                onClick={() => console.log(recommendation.id)}
-              />
-            ))}
-          </>
+        {currentTVShow && (
+          <TVShowList
+            tvShowList={tvShowRecommendations}
+            onClickItem={updateCurrentTVShow}
+          />
         )}
       </div>
     </div>
