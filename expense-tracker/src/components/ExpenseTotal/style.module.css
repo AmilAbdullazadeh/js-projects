@@ -1,0 +1,9 @@
+.label {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.amount {
+  text-align: right;
+  font-size: 22px;
+}
