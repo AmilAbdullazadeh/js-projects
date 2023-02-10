@@ -16,7 +16,7 @@ export class TVShowAPI {
 
   static async fetchByTitle(title) {
     const response = await axios(
-      `${BASE_URL}search???/tv${API_KEY_PARAM}&query=${title}`
+      `${BASE_URL}search/tv${API_KEY_PARAM}&query=${title}`
     );
     return response.data.results[0];
   }
