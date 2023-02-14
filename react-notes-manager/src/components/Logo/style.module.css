@@ -1,0 +1,21 @@
+.logo_txt {
+    font-size: 30px;
+    font-weight: 700;
+    color: #0d6efd;
+}
+
+.container {
+    display: flex;
+   /* Otherwise the clickable area for the logo is to wide */
+    width: fit-content;
+    cursor: pointer;
+}
+
+.img {
+    height: 40px
+}
+
+.subtitle {
+    color: #b8b8b8;
+    word-wrap: break-word;
+}
