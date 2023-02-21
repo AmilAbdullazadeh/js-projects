@@ -23,12 +23,12 @@ export function NoteForm({
   onSubmit,
 }) {
   const [formValues, setFormValues] = useState({
-    title: note.title || "",
-    content: note.content || ""
+    title: note?.title || "",
+    content: note?.content || ""
   });
   const [formErrors, setFormErrors] = useState({
-    title: note.title ? undefined : true,
-    content: note.content ? undefined : true
+    title: note?.title ? undefined : true,
+    content: note?.content ? undefined : true
   });
 
   const updateFormValues = (e) => {
