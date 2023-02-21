@@ -7,30 +7,35 @@ import s from "./style.module.css";
 
 const VALIDATOR = {
   title: (value) => {
-    return ValidatorService.min(value, 3) || ValidatorService.max(value, 20)
+    return ValidatorService.min(value, 3) || ValidatorService.max(value, 20);
   },
   content: (value) => {
-    return ValidatorService.min(value, 10) || ValidatorService.max(value, 100)
-  }
+    return ValidatorService.min(value, 3);
+  },
 };
 
-export function NoteForm({ title, onClickEdit, onClickDelete, onSubmit }) {
+export function NoteForm({
+  isEditable = true,
+  note,
+  title,
+  onClickEdit,
+  onClickDelete,
+  onSubmit,
+}) {
   const [formValues, setFormValues] = useState({
-    title: "",
-    content: ""
-  })
+    title: note?.title || "",
+    content: note?.content || "",
+  });
   const [formErrors, setFormErrors] = useState({
-    title: true,
-    content: true
-  })
+    title: note?.title ? undefined : true,
+    content: note?.content ? undefined : true,
+  });
 
   const updateFormValues = (e) => {
-    const name = e.target.name
-    const value = e.target.value
-    setFormValues({
-      ...formValues,
-      [name]: value
-    });
+    const name = e.target.name;
+    const value = e.target.value;
+
+    setFormValues({ ...formValues, [name]: value });
     validate(name, value);
   };
 
@@ -49,29 +54,18 @@ export function NoteForm({ title, onClickEdit, onClickDelete, onSubmit }) {
     }
     return false;
   };
-
-    const submitBtn = (
-      <div className={s.submit_btn}>
-        <ButtonPrimary
-          isDisabled={hasError()}
-          onClick={() => onSubmit(formValues)}
-        >
-          Submit
-        </ButtonPrimary>
-      </div>
-    );
-  
   const actionIcons = (
     <>
       <div className="col-1">
         {onClickEdit && <PencilFill className={s.icon} />}
       </div>
       <div className="col-1">
-        {onClickDelete && <TrashFill className={s.icon} />}
+        {onClickDelete && (
+          <TrashFill className={s.icon} />
+        )}
       </div>
     </>
   );
-  
   const titleInput = (
     <div className="mb-5">
       <label className="form-label">Title</label>
@@ -80,11 +74,11 @@ export function NoteForm({ title, onClickEdit, onClickDelete, onSubmit }) {
         type="text"
         name="title"
         className="form-control"
+        value={formValues.title}
       />
       <FieldError msg={formErrors.title} />
     </div>
   );
-  
   const contentInput = (
     <div className="mb-5">
       <label className="form-label">Content</label>
@@ -94,8 +88,20 @@ export function NoteForm({ title, onClickEdit, onClickDelete, onSubmit }) {
         name="content"
         className="form-control"
         row="5"
+        value={formValues.content}
       />
       <FieldError msg={formErrors.content} />
+    </div>
+  );
+
+  const submitBtn = (
+    <div className={s.submit_btn}>
+      <ButtonPrimary
+        isDisabled={hasError()}
+        onClick={() => onSubmit(formValues)}
+      >
+        Submit
+      </ButtonPrimary>
     </div>
   );
 
@@ -108,7 +114,10 @@ export function NoteForm({ title, onClickEdit, onClickDelete, onSubmit }) {
         {actionIcons}
       </div>
       <div className={`mb-3 ${s.title_input_container}`}>{titleInput}</div>
-      <div className="mb-3">{contentInput}</div>
+      <div className="mb-3">
+        {/* contentInput */}
+        {note.content}
+      </div>
       {onSubmit && submitBtn}
     </div>
   );

@@ -1,21 +1,26 @@
+// import { NoteAPI } from "api/api";
 import { TextCard } from "components/TextEditor/TextEditor";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+// import { deleteNote } from "store/notes/notes-slice";
 import s from "./style.module.css";
+export function NoteList({ noteList }) {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-export function NoteList() {
-  const navigate = useNavigate()
-  const noteList = useSelector((state) => state.noteSlice.noteList)
+  async function deleteNote_(note) {
+  }
+
   return (
     <div className={`row justify-content-center ${s.cards_container}`}>
-      {noteList.map((note) => (
+      {noteList?.map((note) => (
         <div key={note.id} className={s.card_container}>
           <TextCard
             title={note.title}
-            content={note.content}
             subtitle={note.created_at}
-            onClick={() => navigate(`note/${note.id}`)}
-            onClickTrash={() => alert("hello")}
+            content={note.content}
+            onClickTrash={() => deleteNote_(note)}
+            onClick={() => navigate("note/" + note.id)}
           />
         </div>
       ))}
