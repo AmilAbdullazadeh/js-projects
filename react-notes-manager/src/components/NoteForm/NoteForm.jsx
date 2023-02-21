@@ -23,12 +23,12 @@ export function NoteForm({
   onSubmit,
 }) {
   const [formValues, setFormValues] = useState({
-    title: note?.title || "",
-    content: note?.content || "",
+    title: note.title || "",
+    content: note.content || ""
   });
   const [formErrors, setFormErrors] = useState({
-    title: note?.title ? undefined : true,
-    content: note?.content ? undefined : true,
+    title: note.title ? undefined : true,
+    content: note.content ? undefined : true
   });
 
   const updateFormValues = (e) => {
@@ -57,11 +57,11 @@ export function NoteForm({
   const actionIcons = (
     <>
       <div className="col-1">
-        {onClickEdit && <PencilFill className={s.icon} />}
+        {onClickEdit && <PencilFill onClick={onClickEdit} className={s.icon} />}
       </div>
       <div className="col-1">
         {onClickDelete && (
-          <TrashFill className={s.icon} />
+          <TrashFill onClick={onClickDelete} className={s.icon} />
         )}
       </div>
     </>
@@ -113,10 +113,11 @@ export function NoteForm({
         </div>
         {actionIcons}
       </div>
-      <div className={`mb-3 ${s.title_input_container}`}>{titleInput}</div>
+      <div className={`mb-3 ${s.title_input_container}`}>
+        {isEditable && titleInput}
+      </div>
       <div className="mb-3">
-        {/* contentInput */}
-        {note.content}
+        {isEditable ? contentInput : <pre>{note.content}</pre>}
       </div>
       {onSubmit && submitBtn}
     </div>

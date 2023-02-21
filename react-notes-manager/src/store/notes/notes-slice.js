@@ -13,11 +13,16 @@ export const noteSlice = createSlice({
       state.noteList.push(action.payload);
     },
     updateNote: (state, action) => {
-      const index = state.noteList.findIndex((note) => note.id === action.payload.id)
-      state.noteList[index] = action.payload
+      const index = state.noteList.findIndex(
+        (note) => note.id === action.payload.id
+      );
+      state.noteList[index] = action.payload;
     },
     deleteNote: (state, action) => {
-      state.noteList.filter((note) => note.id !== action.payload.id)
+      const filteredNoteList = state.noteList.filter(
+        (note) => note.id !== action.payload.id
+      );
+      state.noteList = filteredNoteList;
     },
   },
 });
