@@ -4,14 +4,18 @@ import { addExpense } from "store/expense/expense-slice";
 import s from "./style.module.css";
 
 export function ExpenseInput(props) {
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState(0);
+
   const dispatch = useDispatch();
-  const [price, setPrice] = useState();
-  const [name, setName] = useState();
+
+  // redux toolkit vs redux
 
   function submit(e) {
     e.preventDefault();
-    dispatch(addExpense({ price, name }));
+    dispatch(addExpense({ name, price }));
   }
+
   return (
     <form onSubmit={submit}>
       <div className="row justify-content-center">

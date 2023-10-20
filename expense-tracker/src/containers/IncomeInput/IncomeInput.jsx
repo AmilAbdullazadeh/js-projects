@@ -3,11 +3,12 @@ import { setIncome } from "store/expense/expense-slice";
 import s from "./style.module.css";
 
 export function IncomeInput(props) {
-  const income = useSelector((state) => state.EXPENSE.income);
-  const dispatch = useDispatch()
+  const defaultValue = useSelector((state) => state.expense.income);
+    const dispatch = useDispatch();
 
   function setValue(e) {
-    dispatch(setIncome(Number.parseFloat(e.target.value)));
+    const value = e.target.value;
+    dispatch(setIncome(value));
   }
 
   return (
@@ -15,7 +16,7 @@ export function IncomeInput(props) {
       <div className={`col-6 ${s.label}`}>Income</div>
       <div className="col-6">
         <input
-          defaultValue={income}
+          defaultValue={defaultValue}
           onChange={setValue}
           type="number"
           className="form-control"

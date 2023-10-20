@@ -4,7 +4,7 @@ export function ListItem({item}) {
   return (
     <tr>
       <th>{ item.name }</th>
-      <td className={s.price}>{ item.price } $</td>
+      <td className={s.price}>{item.price}$</td>
     </tr>
   );
 }

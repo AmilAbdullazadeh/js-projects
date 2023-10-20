@@ -2,12 +2,13 @@ import { useSelector } from "react-redux";
 import s from "./style.module.css";
 
 export function ExpenseTotal(props) {
-  const income = useSelector((state) => state.EXPENSE.income);
-  const expenseList = useSelector((state) => state.EXPENSE.expenseList);
-  
-  const totalExpense = expenseList.reduce((acc, expense) => acc + expense.price, 0)
+  const income = useSelector(state => state.expense.income);
+  const expenseList = useSelector(state => state.expense.exponseList);
 
-  const remainingMoney = income - totalExpense
+  const totalExpense = expenseList.reduce((prev, next) => prev + next.price, 0);
+
+    const remainingMoney =  income - totalExpense;
+
   return (
     <div>
       <div className="row">
