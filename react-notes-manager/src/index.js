@@ -19,14 +19,14 @@ root.render(
   <StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" exact element={<App />}>
-            <Route path="/" element={<NoteBrowse />} />
-            <Route path="/note/new" element={<NoteCreate />} />
-            <Route path="/note/:noteId" element={<Note />} />
-            <Route path="*" element={<PageNotFound />} />
-          </Route>
-        </Routes>
+          <Routes>
+              <Route exact element={<App />} path='/' >
+                  <Route element={<NoteBrowse />} path='/' />
+                  <Route element={<NoteCreate />} path='/notes/new' />
+                  <Route element={<Note />} path='/notes/:id' />
+                  <Route element={<PageNotFound />} path='/*' />
+              </Route>
+          </Routes>
       </BrowserRouter>
     </Provider>
   </StrictMode>

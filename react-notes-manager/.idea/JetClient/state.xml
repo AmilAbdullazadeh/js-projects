@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JetClientState">
+    <option name="draftsState">
+      <draftsState>
+        <option name="requests">
+          <list>
+            <requestState>
+              <option name="id" value="3f62df82-a1ff-47c1-8a7f-00675f614687" />
+              <option name="method" value="GET" />
+              <option name="name" value="Draft" />
+              <option name="url" value="http://localhost:3200/notes" />
+            </requestState>
+          </list>
+        </option>
+      </draftsState>
+    </option>
+    <option name="id" value="d63b9c2d-9ba2-4dfa-824f-45240484989d" />
+  </component>
+</project>

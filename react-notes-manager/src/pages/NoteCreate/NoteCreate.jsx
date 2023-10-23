@@ -5,23 +5,12 @@ import { useNavigate } from "react-router-dom";
 import { addNote } from "store/notes/notes-slice";
 
 export function NoteCreate(props) {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const submit = async (formValues) => {
-    const values = await NoteAPI.create({
-      ...formValues,
-      created_at: new Date().toLocaleDateString(),
-    });
-    dispatch(addNote(values))
-    navigate("/")
-  };
-
   return (
     <>
+        Test
       <NoteForm
         title="New note"
-        onSubmit={submit}
+        // onSubmit={submit}
       />
     </>
   );
