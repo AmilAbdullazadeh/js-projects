@@ -1,4 +1,7 @@
 .card_container{
-    width: 300px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
     margin:15px;
 }

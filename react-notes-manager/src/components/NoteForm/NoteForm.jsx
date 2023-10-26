@@ -5,100 +5,96 @@ import { PencilFill, TrashFill } from "react-bootstrap-icons";
 import { ValidatorService } from "services/validator";
 import s from "./style.module.css";
 
-const VALIDATOR = {
-  title: (value) => {
-    return ValidatorService.min(value, 3) || ValidatorService.max(value, 20);
-  },
-  content: (value) => {
-    return ValidatorService.min(value, 3);
-  },
-};
+const VALIDATION_RULES = {
+    title: (value) => ValidatorService.min(value, 3) || ValidatorService.max(value, 10) ,
+    content: (value) => ValidatorService.min(value, 3) || ValidatorService.max(value, 30)
+}
 
 export function NoteForm({
   isEditable = true,
   note,
-  title,
+  // title,
   onClickEdit,
   onClickDelete,
   onSubmit,
 }) {
+
+    const [isSubmit, setIsSubmit] = useState(false);
+
   const [formValues, setFormValues] = useState({
-    title: note?.title || "",
-    content: note?.content || ""
-  });
+    title: "",
+    content: "",
+    });
+
   const [formErrors, setFormErrors] = useState({
-    title: note?.title ? undefined : true,
-    content: note?.content ? undefined : true
-  });
+    title: "",
+    content: "",
+    });
 
   const updateFormValues = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
+      const { name, value } = e.target;
+        setFormValues({
+            ...formValues,
+            [name]: value,
+        });
+      isSubmit && validate(name, value);
+  }
 
-    setFormValues({ ...formValues, [name]: value });
-    validate(name, value);
-  };
+  const hasError = () => {return Object.values(formErrors).some(errMsg => errMsg)}
 
-  const validate = (fieldName, fieldValue) => {
-    setFormErrors({
-      ...formErrors,
-      [fieldName]: VALIDATOR[fieldName](fieldValue),
-    });
-  };
-
-  const hasError = () => {
-    for (const fieldName in formErrors) {
-      if (formErrors[fieldName]) {
-        return true;
-      }
+    const validate = (name, value) => {
+        const errorMessage = VALIDATION_RULES[name](value);
+        setFormErrors({ ...formErrors, [name]: errorMessage });
     }
-    return false;
-  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsSubmit(true);
+    if (!hasError()) {
+          onSubmit(formValues);
+      }
+  }
+
   const actionIcons = (
     <>
       <div className="col-1">
-        {onClickEdit && <PencilFill onClick={onClickEdit} className={s.icon} />}
       </div>
       <div className="col-1">
-        {onClickDelete && (
-          <TrashFill onClick={onClickDelete} className={s.icon} />
-        )}
       </div>
     </>
   );
+
   const titleInput = (
     <div className="mb-5">
       <label className="form-label">Title</label>
       <input
-        onChange={updateFormValues}
         type="text"
         name="title"
         className="form-control"
-        value={formValues.title}
+        onChange={(e) => updateFormValues(e)}
       />
-      <FieldError msg={formErrors.title} />
+        <FieldError msg={formErrors?.title} />
     </div>
   );
+
   const contentInput = (
     <div className="mb-5">
       <label className="form-label">Content</label>
       <textarea
-        onChange={updateFormValues}
         type="text"
         name="content"
         className="form-control"
+        onChange={(e) => updateFormValues(e)}
         row="5"
-        value={formValues.content}
       />
-      <FieldError msg={formErrors.content} />
+        <FieldError msg={formErrors?.content} />
     </div>
   );
 
   const submitBtn = (
     <div className={s.submit_btn}>
       <ButtonPrimary
-        isDisabled={hasError()}
-        onClick={() => onSubmit(formValues)}
+        onClick={handleSubmit}
       >
         Submit
       </ButtonPrimary>
@@ -109,17 +105,16 @@ export function NoteForm({
     <div className={s.container}>
       <div className="row justify-content-space-between">
         <div className="col-10">
-          <h2 className="mb-3">{title}</h2>
+          <h2 className="mb-3"></h2>
         </div>
-        {actionIcons}
       </div>
       <div className={`mb-3 ${s.title_input_container}`}>
-        {isEditable && titleInput}
+            {titleInput}
       </div>
       <div className="mb-3">
-        {isEditable ? contentInput : <pre>{note.content}</pre>}
+          {contentInput}
       </div>
-      {onSubmit && submitBtn}
+        {submitBtn}
     </div>
   );
 }
